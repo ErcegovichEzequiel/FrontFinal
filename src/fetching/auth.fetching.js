@@ -10,7 +10,7 @@ export const login = async (usuario) => {
         if (!result.ok) {
             throw result;
         } else {
-            localStorage.setItem('token', result.token);  // Almacena el token real recibido
+            localStorage.setItem('token', result.token);  
         }
     } catch (error) {
         throw { message: error.message };
@@ -40,7 +40,7 @@ export const verificarToken = async () => {
     }
 
     try {
-        const response = await fetch('https://backend-mongodb-smoky.vercel.app/api/auth/verify-token', {
+        const response = await fetch(URL.URL_API + ROUTE + '/verify-token', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -50,14 +50,9 @@ export const verificarToken = async () => {
         if (!response.ok) {
             throw new Error(`Error HTTP: ${response.status}`);
         }
-        console.log('Respuesta de verificación de token:', response);
-        console.log("Holis" , token)
-
-
         const data = await response.json();
-        console.log('Respuesta de verificación de token:', data);
 
-        return data; // O el tratamiento que necesites hacer con la respuesta
+        return data; 
     } catch (error) {
         console.error('Error verificando token:', error.message);
         throw error;

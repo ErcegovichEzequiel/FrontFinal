@@ -7,26 +7,26 @@ import { register } from '../../src/fetching/auth.fetching'
 import { useNavigate } from 'react-router-dom'
 
 const Registrate = () => {
-  const [errorText, setErrorText] = useState('') // Texto de error al registrar el usuario al servidor
-  const navigate = useNavigate() // Hook para redireccionar a otras pantallas
+  const [errorText, setErrorText] = useState('') 
+  const navigate = useNavigate() 
   const handleSubmit = async (event) => {
     try {
       event.preventDefault()
       
-      const usuario = { // Crear un objeto con los datos del usuario a registrar
-        nombre: event.target.nombre.value, // Obtener los valores de los campos del formulario y asignarlos al objeto de usuario
+      const usuario = { 
+        nombre: event.target.nombre.value, 
         apellido: event.target.apellido.value,
         edad: event.target.edad.value,
         email: event.target.email.value,
         password: event.target.password.value,
         passwordConfirm: event.target.passwordConfirm.value
       }
-      await register(usuario) // Llamar a la función de registro del servidor
-      setErrorText('') // Limpiar el texto de error
-      navigate('../Login') // Redireccionar a la pantalla de inicio de sesión
+      await register(usuario) 
+      setErrorText('') 
+      navigate('../Login') 
     }
     catch (error) {
-      setErrorText(error.message) // Mostrar el error al usuario en pantalla
+      setErrorText(error.message) 
     }
   }
   return (

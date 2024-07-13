@@ -2,7 +2,7 @@ import { HTTP, URL } from "./http"
 
 const ROUTE = '/api/carts'
 
-// Obtener todos los productos del carrito
+
 const getCartItems = async () => {
     try {
         const response = await HTTP.GET(URL.URL_API + ROUTE)
@@ -20,12 +20,9 @@ const getCartItems = async () => {
  const addToCart = async (productData) => {
      try {
          const response = await HTTP.POST(URL.URL_API + ROUTE, productData);
-         console.log('Solicitud:', productData); // Imprime los datos enviados
-         console.log('Respuesta:', response);   // Imprime la respuesta del servidor
          if (!response || !response.result || !response.result.producto) {
              throw new Error("No se pudo agregar el producto al carrito");
          }
-         console.log(response.result.productos);
          return response.result.productos;
      } catch (error) {
          console.error("Error en addToCart:", error);
@@ -33,7 +30,6 @@ const getCartItems = async () => {
      }
  };
 
-// Eliminar un producto del carrito por su ID (productId)
 const deleteCartItem = async (productId) => {
     try {
         const response = await HTTP.DELETE(URL.URL_API + `${ROUTE}/${productId}`)
@@ -47,7 +43,6 @@ const deleteCartItem = async (productId) => {
     }
 }
 
-// Finalizar la compra y vaciar el carrito
 const checkout = async () => {
     try {
         const response = await HTTP.DELETE(URL.URL_API + ROUTE)

@@ -15,12 +15,10 @@ const Tienda = () => {
     const checkLoginStatus = async () => {
       try {
           await verificarToken();
-          console.log('Usuario autenticado correctamente');
           setLoggedIn(true);
       } catch (error) {
           console.error('Error al verificar token:', error.message);
           setLoggedIn(false);
-          // Aquí puedes manejar el error según tu flujo de aplicación (por ejemplo, redirigir al inicio de sesión)
       }
   };
 

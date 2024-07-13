@@ -6,7 +6,6 @@
 const getProducts = async () => {
     try {
       const response = await HTTP.GET(URL.URL_API + ROUTE);
-      console.log(response)
       if (!response || !response.result || !response.result.productos) {
         throw new Error("La respuesta no contiene productos");
       }
@@ -17,7 +16,7 @@ const getProducts = async () => {
     }
   };
 
-// Obtener un producto por su ID (pid)
+
 const getProductById = async (pid) => {
   try {
     const response = await HTTP.GET(URL.URL_API + ROUTE + '/' + pid);
@@ -31,7 +30,7 @@ const getProductById = async (pid) => {
   }
 };
 
-// Crear un nuevo producto
+
 const createProduct = async (productData) => {
   try {
     const response = await HTTP.POST(URL.URL_API + ROUTE, productData);
@@ -45,7 +44,7 @@ const createProduct = async (productData) => {
   }
 };
 
-// Modificar un producto existente
+
 const updateProduct = async (pid, productData) => {
   try {
     const response = await HTTP.PUT(URL.URL_API + ROUTE + '/' + pid, productData);
@@ -59,7 +58,7 @@ const updateProduct = async (pid, productData) => {
   }
 };
 
-// Eliminar un producto por su ID (pid)
+
 const deleteProduct = async (pid) => {
   try {
     const response = await HTTP.DELETE(URL.URL_API + ROUTE + '/' + pid);
