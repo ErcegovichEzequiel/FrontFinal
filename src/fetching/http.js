@@ -4,19 +4,21 @@ export const HTTP = {
             const response = await fetch(url, {
                 method: 'GET',
                 headers: headers
-                
+
             });
             if (!response.ok) {
                 throw new Error(`Error HTTP: ${response.status}`);
             }
+            return response.json();
+        }
 
-            return response.json(); 
+        catch (error) {
             console.error("Error en HTTP GET:", error);
             throw error;
         }
+
+
     },
-
-
     POST: async (url, body) => {
         const response = await fetch(url, {
             method: 'POST',

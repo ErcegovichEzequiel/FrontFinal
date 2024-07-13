@@ -7,6 +7,9 @@ import Register from '../Screens/Register/Register';
 import Carrito from '../Screens/Carrito';
 import Nosotros from '../Screens/Nosotros';
 import Tienda from '../Screens/Tienda';
+import Desarrollador from '../Screens/Desarrollador/Desarrollador';
+import UsuarioDesarrollador from '../Screens/Desarrollador/UsuarioDesarrollador';
+import ProductoDesarrollador from '../Screens/Desarrollador/ProductoDesarrollador';
 
 const RouterList = () => {
   return (
@@ -19,6 +22,9 @@ const RouterList = () => {
         <Route path='/Carrito' element={<Carrito />} />
         <Route path='/Nosotros' element={<Nosotros />} />
         <Route path='/Tienda' element={<Tienda />} />
+        <Route path='/Desarrollador' element={<Desarrollador />} />
+        <Route path='/UsuarioDesarrollador' element={<UsuarioDesarrollador />} />
+        <Route path='/ProductoDesarrollador' element={<ProductoDesarrollador />} />
       </Routes>
     </div>
   );
