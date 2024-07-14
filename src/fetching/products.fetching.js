@@ -1,21 +1,19 @@
- import { HTTP, URL } from "./http"
+import { HTTP, URL } from "./http"
 
- const ROUTE = '/api/products'
-
+const ROUTE = '/api/products'
 
 const getProducts = async () => {
-    try {
-      const response = await HTTP.GET(URL.URL_API + ROUTE);
-      if (!response || !response.result || !response.result.productos) {
-        throw new Error("La respuesta no contiene productos");
-      }
-      return response.result.productos;
-    } catch (error) {
-      console.error("Error en getProducts:", error);
-      throw error;
+  try {
+    const response = await HTTP.GET(URL.URL_API + ROUTE);
+    if (!response || !response.result || !response.result.productos) {
+      throw new Error("La respuesta no contiene productos");
     }
-  };
-
+    return response.result.productos;
+  } catch (error) {
+    console.error("Error en getProducts:", error);
+    throw error;
+  }
+};
 
 const getProductById = async (pid) => {
   try {
@@ -30,7 +28,6 @@ const getProductById = async (pid) => {
   }
 };
 
-
 const createProduct = async (productData) => {
   try {
     const response = await HTTP.POST(URL.URL_API + ROUTE, productData);
@@ -44,7 +41,6 @@ const createProduct = async (productData) => {
   }
 };
 
-
 const updateProduct = async (pid, productData) => {
   try {
     const response = await HTTP.PUT(URL.URL_API + ROUTE + '/' + pid, productData);
@@ -57,7 +53,6 @@ const updateProduct = async (pid, productData) => {
     throw error;
   }
 };
-
 
 const deleteProduct = async (pid) => {
   try {
